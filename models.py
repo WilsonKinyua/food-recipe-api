@@ -1,10 +1,10 @@
-from api import db
 from datetime import datetime
+from app import db as db
 
 
 # Model for the table 'Recipe'
 class Recipe(db.Model):
-    __tablename__ = 'Recipe'
+    __tablename__ = 'recipe'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(500), nullable=False)
