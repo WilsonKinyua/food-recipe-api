@@ -133,6 +133,12 @@ class IngredientsList(Resource):
         return ingredient.to_json()
 
 
+# get all ingredients for a recipe by recipe_id 
+class RecipeIngredients(Resource):
+    def get(self, recipe_id):
+        return {"ingredients": [ingredient.to_json() for ingredient in Ingredient.get_by_recipe_id(recipe_id)]}
+
+
 # set the route and accepted methods
 
 
@@ -143,5 +149,8 @@ api.add_resource(SingleRecipe, "/recipe")
 # ingredient endpoints
 api.add_resource(IngredientsList, "/ingredients")
 api.add_resource(SingleIngredient, "/ingredient")
+
+# get all ingredients for a recipe by recipe_id
+api.add_resource(RecipeIngredients, "/recipe/<recipe_id>/ingredients")
 if __name__ == "__main__":
     app.run(debug=True)

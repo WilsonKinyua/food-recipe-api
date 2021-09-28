@@ -109,5 +109,10 @@ class Ingredient(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    # Method to get all ingredients by recipe id
+    @staticmethod
+    def get_by_recipe_id(recipe_id):
+        return Ingredient.query.filter_by(recipe_id=recipe_id).all()
+
     def __repr__(self):
         return '<Ingredient %r>' % self.name
