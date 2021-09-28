@@ -66,12 +66,14 @@ class Recipe(db.Model):
 class Ingredient(db.Model):
     __tablename__ = 'ingredient'
     id = db.Column(db.Integer, primary_key=True)
+    node_id = db.Column(db.String(255), nullable=False)
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
     name = db.Column(db.String(100), nullable=False)
     quantity = db.Column(db.String(100), nullable=False)
     unit = db.Column(db.String(100), nullable=False)
 
     def __init__(self, name, quantity, unit, recipe_id):
+        self.node_id = uuid.uuid4().hex[:20]
         self.name = name
         self.quantity = quantity
         self.unit = unit
@@ -80,17 +82,18 @@ class Ingredient(db.Model):
     # Method to return the ingredient as a json
     def to_json(self):
         return {
-            'id': self.id,
+            # 'id': self.id,
+            "node_id": self.node_id,
+            'recipe_id': self.recipe_id,
             'name': self.name,
             'quantity': self.quantity,
             'unit': self.unit,
-            'recipe_id': self.recipe_id,
         }
 
     # Method to get a single ingredient by id
     @staticmethod
-    def get_by_id(id):
-        return Ingredient.query.filter_by(id=id).first()
+    def get_by_id(node_id):
+        return Ingredient.query.filter_by(node_id=node_id).first()
 
     # Method to get all ingredients
     @staticmethod
