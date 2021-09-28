@@ -10,8 +10,8 @@ app.secret_key = "mkuu"
 api = Api(app)
 
 
-# app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
-app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql+psycopg2://developer:developerwilson@localhost/recipe_app'
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+# app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql+psycopg2://developer:developerwilson@localhost/recipe_app'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
@@ -152,5 +152,6 @@ api.add_resource(SingleIngredient, "/ingredient/<node_id>")
 
 # get all ingredients for a recipe by recipe_id
 api.add_resource(RecipeIngredients, "/recipe/<recipe_id>/ingredients")
+
 if __name__ == "__main__":
     app.run(debug=True)
