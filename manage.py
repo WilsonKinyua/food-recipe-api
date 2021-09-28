@@ -144,11 +144,11 @@ class RecipeIngredients(Resource):
 
 # recipe endpoints
 api.add_resource(RecipeList, "/recipes")
-api.add_resource(SingleRecipe, "/recipe")
+api.add_resource(SingleRecipe, "/recipe/<node_id>")
 
 # ingredient endpoints
 api.add_resource(IngredientsList, "/ingredients")
-api.add_resource(SingleIngredient, "/ingredient")
+api.add_resource(SingleIngredient, "/ingredient/<node_id>")
 
 # get all ingredients for a recipe by recipe_id
 api.add_resource(RecipeIngredients, "/recipe/<recipe_id>/ingredients")

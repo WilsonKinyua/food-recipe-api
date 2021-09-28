@@ -1,4 +1,4 @@
-from app import db as db
+from manage import db as db
 import uuid
 
 # Model for the table 'Recipe'
