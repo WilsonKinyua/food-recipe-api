@@ -45,6 +45,11 @@ class SingleRecipe(Resource):
         db.session.commit()
         return recipe.to_json()
 
+    # update method to update a recipe
+    
+
+    
+
 
 class RecipeList(Resource):
     # get all recipes
@@ -53,6 +58,6 @@ class RecipeList(Resource):
 
 # set the route and accepted methods
 api.add_resource(RecipeList, "/recipes")
-api.add_resource(SingleRecipe, "/recipe")
+api.add_resource(SingleRecipe, "/recipe/<node_id>")
 if __name__ == "__main__":
     app.run(debug=True)

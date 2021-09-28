@@ -28,7 +28,7 @@ class Recipe(db.Model):
     # Method to return the recipe as a json
     def to_json(self):
         return {
-            'id': self.id,
+            # 'id': self.id,
             "node_id": self.node_id,
             'name': self.name,
             'description': self.description,
